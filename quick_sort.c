@@ -4,7 +4,7 @@ int data[10] = {31, 41, 59, 26, 53, 58, 97, 93, 23, 84};
 int nitems = 10;
 
 int median3(int x, int y, int z, int (*compare)(int, int)) {
-    if (x < y) {
+    if (compare(x,y)) {
         return compare(y,z) ? y
         : compare(x,z) ? z
         : x;
@@ -24,10 +24,12 @@ void swap (int* x, int* y) {
 
 int partition(int array[], int l, int r, int (*compare)(int, int)) {
     int pivot = median3(array[l], array[r], array[(l+r)/2], compare);
+    //  printf(" pivot = %d =med(%d %d %d)\n",pivot,array[l], array[r], array[(l+r)/2]);
 
     while (1) {
         while (compare(array[l], pivot)) l++;
         while (compare(pivot, array[r])) r--;
+        //  printf(" (l,r) = (%d,%d)\n",l,r);
         if (l > r) return l;
         
         swap(&array[l], &array[r]);
