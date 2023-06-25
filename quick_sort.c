@@ -15,7 +15,7 @@ int median3(int x, int y, int z, int (*compare)(int, int)) {
     }
 }
 
-void swap (int* x, int* y) {
+void swap(int* x, int* y) {
     int tmp;
     tmp = *x;
     *x = *y;
